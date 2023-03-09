@@ -12,7 +12,7 @@ Each project is contained in its own subdirectory, with a README file that provi
 
 Here is a list of the projects included in this repository:
 
-- Logic Projects
+1. [Programming Logic Projects](1-programming-logic-projects/README.md)
 
 Feel free to explore each project and use them as a learning resource to enhance your Python programming skills.
 
