@@ -11,6 +11,9 @@ def simple_calculator(n1: float, n2: float, operation: int):
             3 - multiplication
             4 - division.
 
+    Raises:
+        Exception: Invalid operation
+
     Returns:
         float: Result of the operation
     """
@@ -29,7 +32,7 @@ def simple_calculator(n1: float, n2: float, operation: int):
         return n1 / n2
     # Raise invalid operation exception
     else:
-        raise Exception("Invalid Operation!")
+        raise Exception("Invalid operation")
 
 
 def main():
