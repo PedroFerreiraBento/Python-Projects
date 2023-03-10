@@ -1,14 +1,30 @@
-# Guess the number definition
+# To detect the Operational System
+import platform
+
+# To clear the terminal
+import os
+
+# To select a random number
 import random
 
+# Clear the terminal
+def clear_terminal():
+    """Clear the terminal"""
+    if platform.system() == "Windows":
+        os.system("cls")
+    elif platform.system() == "Linux":
+        os.system("clear")
 
-def main():
-    """Guess the number"""
-    try:
-        # Get a random target
-        target = random.randint(1, 100)
 
-        while True:
+# Guess number
+def guess_number():
+    """Guess the random number"""
+
+    # Get a random target
+    target = random.randint(1, 100)
+
+    while True:
+        try:
             # Receive value
             guess = float(input("Try to guess the number: "))
 
@@ -20,15 +36,24 @@ def main():
                 print("The guess is to high!\n")
             if guess < target:
                 print("The guess is to low!\n")
+        except ValueError:
+            print("Error: Please enter a number between 1 and 100.")
 
-    except Exception as e:
-        print("Error:", e)
+
+def main():
+    """Main program"""
+    while True:
+        # Reset the prompt
+        clear_terminal()
+
+        # Guess the number
+        guess_number()
+
+        # Re-run looping
+        if input("\nDo you want to run again? (y/n): ").lower() not in ["y", "yes"]:
+            break
 
 
 if __name__ == "__main__":
     # Run the program
     main()
-
-    # Re-run looping
-    while input("\nDo you wan't to run again? (y/n)").lower() in ["y", "yes"]:
-        main()
