@@ -33,7 +33,7 @@ TEMPERATURE_VALUES = {
 }
 
 # Clear the terminal
-def clear_terminal():
+def clear_terminal() -> None:
     """Clear the terminal"""
     if platform.system() == "Windows":
         os.system("cls")
@@ -42,7 +42,7 @@ def clear_terminal():
 
 
 # Get measurements options
-def get_unit_options(measurement: int):
+def get_unit_options(measurement: int) -> str | int:
     """Get measurement options
 
     Args:
@@ -77,7 +77,7 @@ def get_unit_options(measurement: int):
 
 
 # Get the inputs
-def receive_values():
+def receive_values() -> dict:
     """Receive input values
 
     Returns:
@@ -128,7 +128,12 @@ def receive_values():
 
 
 # Unit convert definition
-def unit_convert(number: float, measurement: int, received_type: int, target_type: int):
+def unit_convert(
+    number: float,
+    measurement: int,
+    received_type: int,
+    target_type: int,
+) -> float:
     """Unit convert
 
     Args:
@@ -177,7 +182,7 @@ def unit_convert(number: float, measurement: int, received_type: int, target_typ
         raise ValueError("Invalid operation")
 
 
-def main():
+def main() -> None:
     """Main program"""
     while True:
         # Clear the terminal

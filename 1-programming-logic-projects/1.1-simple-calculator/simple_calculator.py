@@ -5,7 +5,7 @@ import platform
 import os
 
 
-def clear_terminal():
+def clear_terminal() -> None:
     """Clear the terminal"""
     if platform.system() == "Windows":
         os.system("cls")
@@ -43,7 +43,7 @@ def simple_calculator(n1: float, n2: float, operation: int) -> float:
         raise ValueError("Invalid operation")
 
 
-def main():
+def main() -> None:
     """Main program"""
     # Reset the terminal
     clear_terminal()

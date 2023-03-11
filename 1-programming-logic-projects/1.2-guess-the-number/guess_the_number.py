@@ -8,7 +8,7 @@ import os
 import random
 
 # Clear the terminal
-def clear_terminal():
+def clear_terminal() -> None:
     """Clear the terminal"""
     if platform.system() == "Windows":
         os.system("cls")
@@ -17,7 +17,7 @@ def clear_terminal():
 
 
 # Guess number
-def guess_number():
+def guess_number() -> None:
     """Guess the random number"""
 
     # Get a random target
@@ -40,10 +40,10 @@ def guess_number():
             print("Error: Please enter a number between 1 and 100.")
 
 
-def main():
+def main() -> None:
     """Main program"""
     while True:
-        # Reset the prompt
+        # Reset the terminal
         clear_terminal()
 
         # Guess the number
