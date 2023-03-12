@@ -1,6 +1,6 @@
 # Dice Rolling Simulation
 
-This is a Python program that simulates the rolling of dice. The user can specify the number of dice, the number of sides on each die, and the number of times the dice should be rolled.
+This is a Python program that simulates the rolling of dice. The user can specify the number of dice, the number of sides on each dice, and the number of times the dice should be rolled.
 
 ## Getting Started
 

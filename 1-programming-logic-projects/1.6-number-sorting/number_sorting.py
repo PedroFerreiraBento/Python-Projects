@@ -27,7 +27,7 @@ def sort_numbers(sort_method: int, list_of_numbers: str) -> list:
         ValueError: Invalid list of numbers received
 
     Returns:
-        str: Sorted numbers
+        list: Sorted numbers
     """
 
     try:
@@ -90,9 +90,9 @@ def main() -> None:
         except ValueError as e:
             print(f"\nError: {e}")
 
-        # except Exception as e:
-        #     print("\nAn unexpected error occurred")
-        #     print(e)
+        except Exception as e:
+            print("\nAn unexpected error occurred")
+            print(e)
 
 
 if __name__ == "__main__":
