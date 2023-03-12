@@ -18,7 +18,7 @@ def largest_number(numbers: str) -> float:
     """Find the largest number
 
     Args:
-        numbers (str): List of numbers separated by comma
+        numbers (str): Comma separated numbers
 
     Returns:
         float: largest number

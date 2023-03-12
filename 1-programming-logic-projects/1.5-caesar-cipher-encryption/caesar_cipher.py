@@ -14,7 +14,7 @@ def clear_terminal() -> None:
 
 
 # Caesar Cipher
-def caesar_cipher(convertion: int, shifts: int, message: str) -> float:
+def caesar_cipher(convertion: int, shifts: int, message: str) -> str:
     """Encrypt or Decrypt using caesar cipher
 
     Args:
@@ -25,21 +25,11 @@ def caesar_cipher(convertion: int, shifts: int, message: str) -> float:
         message (str): The message
 
     Raises:
-        TypeError: Invalid message type
-        ValueError: Invalid convertion
         UnicodeTranslateError: Message has some char that are not in the english alphabet
 
     Returns:
         str: Encrypted or Decrypted text
     """
-
-    # Validate convertion
-    if convertion not in [1, 2]:
-        raise ValueError("Invalid convertion selected!")
-
-    # Validate message type
-    if type(message) not in str:
-        raise TypeError("Invalid message type")
 
     # Lower the message to facilitate the convertion
     message = message.lower()
@@ -83,7 +73,7 @@ def main() -> None:
             # Get the shifts
             shifts = int(input("Insert the shifts: "))
 
-            # Select convertion type
+            # Get the message
             message = input("\nInsert the message: ")
 
             # Cipher the message
