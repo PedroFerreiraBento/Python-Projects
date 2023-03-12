@@ -4,9 +4,6 @@ import platform
 # To clear the terminal
 import os
 
-# To select a random number
-import random
-
 # Clear the terminal
 def clear_terminal() -> None:
     """Clear the terminal"""
