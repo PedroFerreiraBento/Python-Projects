@@ -283,7 +283,6 @@ def main() -> None:
         except Exception as e:
             print("\nAn unexpected error occurred")
             print(e)
-            raise e
             break
 
 
