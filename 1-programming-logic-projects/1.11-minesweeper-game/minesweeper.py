@@ -384,7 +384,7 @@ def update_board(game_board: list, hidden_mines: list, move: str) -> list:
 
 
 # Check if the game ended
-def check_end_game(game_board: list, hidden_mines: list) -> bool:
+def check_end_game(game_board: list, hidden_mines: list) -> bool | int:
     """Check if the game ended
 
     Args:
@@ -392,7 +392,10 @@ def check_end_game(game_board: list, hidden_mines: list) -> bool:
         hidden_mines (list): Board with mines
 
     Returns:
-        bool: Ended or not
+        bool, int: Game ended check and result
+            -1 - Lose game
+             0 - Not ended
+             1 - Win
     """
 
     # Exploded mines check
@@ -406,11 +409,7 @@ def check_end_game(game_board: list, hidden_mines: list) -> bool:
                 if hidden_mines[row][column] == "O" and game_board[row][column] is "":
                     game_board[row][column] = "X"
 
-        clear_terminal()
-        display_board(board=game_board)
-        print(f"\nYou Lose! Better luck next time!")
-
-        return True
+        return True, -1
 
     # Find if there are any places left
     count_mines = sum([row.count("O") for row in hidden_mines])
@@ -423,13 +422,10 @@ def check_end_game(game_board: list, hidden_mines: list) -> bool:
                 if hidden_mines[row][column] == "O" and game_board[row][column] is "":
                     game_board[row][column] = "O"
 
-        clear_terminal()
-        display_board(board=game_board)
-        print(f"\nYou WIN! Congratulations!")
-        return True
+        return True, 1
 
     # Not ended game
-    return False
+    return False, 0
 
 
 # Minesweeper Game
@@ -462,8 +458,19 @@ def minesweeper() -> None:
             try:
                 player_move = input("\nSelect a place (Ex: B2): ")
                 game_board = update_board(game_board, hidden_mines, player_move)
-                if check_end_game(game_board, hidden_mines):
-                    end_game = True
+                end_game, result = check_end_game(game_board, hidden_mines)
+
+                # If game is ended
+                if result != 0:
+                    clear_terminal()
+                    display_board(board=game_board)
+
+                    if result == 1:
+                        result_text = f"\nYou WIN! Congratulations!"
+                    else:
+                        result_text = f"\nYou Lose! Better luck next time!"
+
+                    print(result_text)
                 break
             except ValueError as e:
                 print(f"Error: {e}")
@@ -491,7 +498,6 @@ def main() -> None:
         except Exception as e:
             print("\nAn unexpected error occurred")
             print(e)
-            raise e
             break
 
 
