@@ -210,13 +210,6 @@ def build_mines(difficulty: int) -> list:
     Args:
         difficulty (int): Game difficulty
 
-    Raises:
-        ValueError: _description_
-        ValueError: _description_
-        ValueError: _description_
-        ValueError: _description_
-        ValueError: _description_
-
     Returns:
         list: board with mines
     """
@@ -393,15 +386,15 @@ def check_end_game(game_board: list, hidden_mines: list) -> bool | int:
 
     Returns:
         bool, int: Game ended check and result
-            -1 - Lose game
+            -1 - Lost game
              0 - Not ended
-             1 - Win
+             1- won
     """
 
     # Exploded mines check
     check_exploded = bool(sum([row.count("X") for row in game_board]))
 
-    # Lose game
+    # Lost game
     if check_exploded:
 
         for row in range(len(hidden_mines)):
@@ -415,7 +408,7 @@ def check_end_game(game_board: list, hidden_mines: list) -> bool | int:
     count_mines = sum([row.count("O") for row in hidden_mines])
     count_empty_places = sum([row.count("") for row in game_board])
 
-    # Win game
+    # won game
     if count_empty_places == count_mines:
         for row in range(len(hidden_mines)):
             for column in range(len(hidden_mines[row])):
@@ -466,9 +459,9 @@ def minesweeper() -> None:
                     display_board(board=game_board)
 
                     if result == 1:
-                        result_text = f"\nYou WIN! Congratulations!"
+                        result_text = f"\nYou won! Congratulations!"
                     else:
-                        result_text = f"\nYou Lose! Better luck next time!"
+                        result_text = f"\nYou lost! Better luck next time!"
 
                     print(result_text)
                 break

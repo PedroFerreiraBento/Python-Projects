@@ -203,7 +203,7 @@ def check_end_game(board: list, player: int) -> bool:
     if ended_game:
         clear_terminal()
         display_board(board=board)
-        print(f"\nPlayer {player} Win! Congratulations!")
+        print(f"\nPlayer {player}won! Congratulations!")
     else:
         # Check tie
         if True not in ["" in row for row in board]:
