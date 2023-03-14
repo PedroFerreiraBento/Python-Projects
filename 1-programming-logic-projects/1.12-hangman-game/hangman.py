@@ -374,17 +374,20 @@ def get_guess(
 
 
 # Check if the game is lost
-def is_game_lost(attempts_left: int) -> bool:
+def is_game_lost(attempts_left: int, target_word: list) -> bool:
     """Return True if the game is lost, False otherwise.
 
     Args:
         attempts_left (int): Number of attempts left
+        target_word (list): Selected word
 
     Returns:
         bool: is game lost
     """
     if attempts_left == 0:
-        print("\nYou lost! Better luck next time!")
+        print(
+            f"\nSelected word: {''.join(target_word)}\nYou lost! Better luck next time!"
+        )
         return True
     return False
 
@@ -423,7 +426,7 @@ def hangman() -> None:
             target_word, guess_word, guess_letters, attempts_left
         )
 
-        if is_game_lost(attempts_left):
+        if is_game_lost(attempts_left, target_word):
             end_game = True
 
         if is_game_won(guess_word):
