@@ -1,5 +1,6 @@
-from urllib import urlopen
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import csv
 from urllib.error import HTTPError, URLError
 from typing import Union
 
@@ -56,16 +57,14 @@ def save_data(data: dict, file_name: str = "output.csv") -> bool:
 
     try:
         with open(file_name, "w", newline="") as csvfile:
-            # Write columns
-            csvfile.write(f"{','.join(data.keys())}\n")
-            # Write content
-            csvfile.write(f"{','.join(data.values())}\n")
-            # Close file
-            csvfile.close()
+            writer = csv.writer(csvfile)
+
+            writer.writerow([key for key in data.keys()])
+            writer.writerow([value for value in data.values()])
 
             return True
     except Exception as e:
-        print(f"[ERROR]: Unexpected error: {e}")
+        print(f"[ERROR]: Unexpected error on save_data(): {e}")
 
     return False
 
@@ -81,7 +80,7 @@ def main() -> None:
 
     # Save data
     is_saved = save_data(data) if data is not None else None
-    
+
     if is_saved:
         print("[INFO]: Successfuly extracted data!")
 

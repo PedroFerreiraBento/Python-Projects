@@ -35,3 +35,6 @@ pip-delete-this-directory.txt
 venv/
 env/
 ENV/
+
+# Extracted data
+*.csv
